@@ -29,7 +29,15 @@ export default {
     return {
       currentPage: 'home-page',
       currentPageProps: {},
+      products: [],
     };
+  },
+  created() {
+    fetch('http://localhost:8091/products')
+      .then((response) => response.json())
+      .then((response) => {
+        this.products = response.products;
+      });
   },
   methods: {
     navigate(destination) {
@@ -42,26 +50,6 @@ export default {
       };
       this.currentPageProps = pageProps[destination];
       this.currentPage = destination;
-    },
-  },
-  computed: {
-    products() {
-      return [{
-        id: 1,
-        name: 'Airwalks',
-        imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51b%2BfaJAyJL._AC_UY395_.jpg',
-        description: 'Time-travel to 1997 and let\'s go Skateboarding!',
-      }, {
-        id: 2,
-        name: 'Xelero',
-        imageUrl: 'https://m.media-amazon.com/images/I/71E5vDK4ucL._AC_UL1500_.jpg',
-        description: 'You can make fun of these shoes all you want, but I can\'t even hear you from up here on these clouds I\'m walking on.',
-      }, {
-        id: 3,
-        name: 'Rothy\'s',
-        imageUrl: 'https://cdn.shopify.com/s/files/1/0877/4986/products/002_ChiliRed_pdp_A.jpg?v=1596060959',
-        description: 'Did you know you can put these in the washing machine?',
-      }];
     },
   },
 };
