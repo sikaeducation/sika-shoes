@@ -7,21 +7,21 @@
           <a
             @click.prevent="navigate('home-page')"
             href="#"
-            :class="{ active: homeIsActive }"
+            :class="{ active: currentPage == 'home-page'}"
           >Home</a>
         </li>
         <li>
           <a
             @click.prevent="navigate('product-page')"
             href="#"
-            :class="{ active: productIsActive }"
+            :class="{ active: currentPage == 'product-page' }"
           >Products</a>
         </li>
         <li>
           <a
             @click.prevent="navigate('about-page')"
             href="#"
-            :class="{ active: aboutIsActive }"
+            :class="{ active: currentPage == 'about-page' }"
           >About</a>
         </li>
       </ul>
@@ -64,15 +64,6 @@ export default {
     },
   },
   computed: {
-    homeIsActive() {
-      return this.currentPage === 'home-page';
-    },
-    productIsActive() {
-      return this.currentPage === 'product-page';
-    },
-    aboutIsActive() {
-      return this.currentPage === 'about-page';
-    },
     products() {
       return [{
         id: 1,
