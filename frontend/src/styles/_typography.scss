@@ -16,6 +16,18 @@
   color: $primary-color-5;
   font-size: $font-xxxxxl;
   letter-spacing: -2px;
+  margin-bottom: $large;
+}
+@mixin heading-font-2 {
+  font-family: "Gill Sans Condensed", sans-serif;
+  color: $primary-color-1;
+  font-size: $font-xxl;
+  margin-bottom: $large;
+}
+@mixin heading-font-3 {
+  font-family: "Gill Sans", sans-serif;
+  color: $primary-color-1;
+  font-size: $font-xxxxl;
 }
 
 @mixin hero-font-1 {
