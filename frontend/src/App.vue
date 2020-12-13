@@ -1,31 +1,10 @@
 <template>
   <div id="the-app">
     <h1>Sika Shoes</h1>
-    <nav>
-      <ul>
-        <li>
-          <a
-            @click.prevent="navigate('home-page')"
-            href="#"
-            :class="{ active: currentPage == 'home-page'}"
-          >Home</a>
-        </li>
-        <li>
-          <a
-            @click.prevent="navigate('product-page')"
-            href="#"
-            :class="{ active: currentPage == 'product-page' }"
-          >Products</a>
-        </li>
-        <li>
-          <a
-            @click.prevent="navigate('about-page')"
-            href="#"
-            :class="{ active: currentPage == 'about-page' }"
-          >About</a>
-        </li>
-      </ul>
-    </nav>
+    <NavigationBar
+      :currentPage="currentPage"
+      @navigate="navigate"
+    />
     <main>
       <component :is="currentPage" :data="currentPageProps" />
     </main>
@@ -36,6 +15,7 @@
 import HomePage from '@/HomePage.vue';
 import ProductPage from '@/ProductPage.vue';
 import AboutPage from '@/AboutPage.vue';
+import NavigationBar from '@/NavigationBar.vue';
 
 export default {
   name: 'App',
@@ -43,6 +23,7 @@ export default {
     HomePage,
     ProductPage,
     AboutPage,
+    NavigationBar,
   },
   data() {
     return {
@@ -89,7 +70,7 @@ export default {
 <style lang="scss">
 @import "@/styles/_reset.scss";
 @import "@/styles/_typography.scss";
-@import "@/styles/_colors.scss";
+@import "@/styles/_sizes.scss";
 
 #the-app {
   display: flex;
@@ -99,27 +80,8 @@ export default {
   h1 {
     @include heading-font-1;
   }
-  nav {
-    ul {
-      display: flex;
-      flex-flow: row wrap;
-      margin-bottom: $baseline;
-      li + li {
-        margin-left: $large;
-      }
-      :not(.active) {
-        text-decoration: none;
-      }
-      .active {
-        text-decoration: underline;
-      }
-    }
-  }
   main {
     max-width: 800px;
-  }
-  #about-page {
-    font-size: $font-xxxl;
   }
 }
 </style>
