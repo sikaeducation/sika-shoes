@@ -29,7 +29,7 @@ app.use(helmet());
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 
-app.get('products', (request: Request, response: Response) => {
+app.get('/products', (request: Request, response: Response) => {
   response.json({ products });
 });
 
